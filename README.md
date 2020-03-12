@@ -22,7 +22,7 @@ a) Create a file in your project called `.tf_version` which contains only the ve
 Terraform v0.12.3
 ```
 
-b) Set the environment variable `TFENV_VER`:
+b) Set the environment variable `TFENV_VER` (Note: overrides value from `.tf_version` file):
 ```
 % TFENV_VER=0.11.0 terraform --version
 Terraform v0.11.0
