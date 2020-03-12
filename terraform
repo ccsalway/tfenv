@@ -1,0 +1,23 @@
+#!/usr/bin/env zsh
+set -e;  # ExitOnError
+
+# variables
+TF_URL="${TFENV_URL:-https://releases.hashicorp.com}"
+TF_VER="${TFENV_VER:-$(<.tf_version)}"
+TF_ARC="${TFENV_ARCH:-darwin_amd64}"
+TF_URI="${TF_URL}/terraform/${TF_VER}"
+TF_ZIP="terraform_${TF_VER}_${TF_ARC}.zip"
+TF_DIR=~/.terraform/bin/${TF_VER}
+
+# check if terraform exists
+if [ ! -f "${TF_DIR}/terraform" ]; then
+if ! curl -I -s -f "${TF_URI}/${TF_ZIP}" > /dev/null; then
+  echo "Invalid URL: ${TF_URI}/${TF_ZIP}"; exit 1;
+fi
+mkdir -p "${TF_DIR}"
+curl -s "${TF_URI}/${TF_ZIP}" | tar -C "${TF_DIR}" -x
+chmod +x "${TF_DIR}/terraform"
+fi
+
+# execute terraform
+"${TF_DIR}/terraform" ${@}
