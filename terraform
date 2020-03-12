@@ -14,8 +14,9 @@ if [ ! -f "${TF_DIR}/terraform" ]; then
 if ! curl -I -s -f "${TF_URI}/${TF_ZIP}" > /dev/null; then
   echo "Invalid URL: ${TF_URI}/${TF_ZIP}"; exit 1;
 fi
+echo "Downloading missing terraform version ${TF_VER}"
 mkdir -p "${TF_DIR}"
-curl -s "${TF_URI}/${TF_ZIP}" | tar -C "${TF_DIR}" -x
+curl -# "${TF_URI}/${TF_ZIP}" | tar -C "${TF_DIR}" -x
 chmod +x "${TF_DIR}/terraform"
 fi
 
