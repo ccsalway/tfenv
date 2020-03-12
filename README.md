@@ -13,19 +13,14 @@ Written for zsh on macOS, although could easily be written for bash or other she
 
 Either:  
 
-a) Create a file in your project called `.tf_version` which contains only the version of terraform you want to use  
+a) Create a file in your project called `.tf_version` which contains only the version of terraform you want to use:
 ```
-% ls -la
--rw-r--r--   1 user  staff    6 Mar 12 07:19 .tf_version
-
-% cat .tf_version
-0.12.3
-
+% echo -n "0.12.3" > .tf_version
 % terraform --version
 Terraform v0.12.3
 ```
 
-b) Set the environment variable `TFENV_VER`  
+b) Set the environment variable `TFENV_VER`:
 ```
 % TFENV_VER=0.11.0 terraform --version
 Terraform v0.11.0
