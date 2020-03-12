@@ -4,8 +4,7 @@
 
 Written for zsh on macOS, although could easily be written for bash or other shells.
 
-*Make sure you haven't already got `terraform` on your `$PATH`*
-ie. running `terraform` should not work.
+*Make sure you haven't already got `terraform` on your `$PATH`. That is, running `terraform` should not work.*
 
 ### Installation
 
